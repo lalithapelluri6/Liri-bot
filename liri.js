@@ -30,7 +30,7 @@ switch(action) {
         mySpotify();
         break;
     case "my-band":
-        myband();
+        myBand();
         break;
     case "do-what-it-says":
         random();
@@ -58,7 +58,7 @@ switch(action) {
 // -------------------------------------------------------------------
 
     function mySpotify() {
-        var spotifyInfo = new Spotify(keys.spotifyKeys);
+        var spotifyInfo = new Spotify(keys.spotify);
 
         spotifyInfo.search({type: 'track', query: value, limit: '1'}, function (err, data) {
             if (err) {
@@ -131,16 +131,16 @@ switch(action) {
         }
         var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
 
-        axios.get(queryUrl).then(function (error, response) {
+        axios.get(queryUrl).then(function (error, response, body) {
 
             // If the request was successful...
             if (!error && response.statusCode === 200) {
 
-                var body = JSON.parse(response.data);
+                var data = JSON.parse(body);
 
                 //Then log the body details from the OMDB API
-                console.log("\nBand Title: " + body.Title + "\n ");
-                console.log("Artists: " + body.artist + "\n ");
+                console.log("\nBand Title: " + data.Title + "\n ");
+                console.log("Artists: " + data.artist + "\n ");
 
             } else {
                 console.log(error);
