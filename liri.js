@@ -115,6 +115,7 @@ switch(action) {
         });
     }
 
+// myBand     
     function myBand() {
         var nodeArgs = process.argv;
 
@@ -122,7 +123,7 @@ switch(action) {
 
         for (var i = 3; i < nodeArgs.length; i++) {
 
-// If TRUE, Build a string with the movie name.
+// If TRUE, Build a string with the artist name.
             if (i > 3 && i < nodeArgs.length) {
                 artist = artist + "+" + nodeArgs[i];
             } else {
