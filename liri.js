@@ -118,18 +118,18 @@ switch(action) {
     function myBand() {
         var nodeArgs = process.argv;
 
-        var bandName = "";
+        var artist = "";
 
         for (var i = 3; i < nodeArgs.length; i++) {
 
 // If TRUE, Build a string with the movie name.
             if (i > 3 && i < nodeArgs.length) {
-                bandName = bandName + "+" + nodeArgs[i];
+                artist = artist + "+" + nodeArgs[i];
             } else {
-                bandName += nodeArgs[i];
+                artist += nodeArgs[i];
             }
         }
-        var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+        var queryUrl = "http://www.artists.bandsintown.com/bandsintown-api/artists/" + artist + "/events?app_id=1001";
 
         axios.get(queryUrl).then(function (error, response, body) {
 
@@ -138,9 +138,10 @@ switch(action) {
 
                 var data = JSON.parse(body);
 
-                //Then log the body details from the OMDB API
+                //Then log the body details from the bands in town API
                 console.log("\nBand Title: " + data.Title + "\n ");
-                console.log("Artists: " + data.artist + "\n ");
+                console.log("Artists: " + data.artists + "\n ");
+                console.log("Events:" + data.events + "\n ");
 
             } else {
                 console.log(error);
