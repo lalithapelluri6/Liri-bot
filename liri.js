@@ -169,9 +169,6 @@ function random() {
             else if (arr[0] == "spotify-this-song") {
                 mySpotify(value);
             }
-            else if (arr[0] == "my-tweets") {
-                myTweets();
-            }
         }
     });
 };
